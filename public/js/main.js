@@ -120,7 +120,7 @@ window.addEventListener('load', function() {
     const hash = window.location.hash;
     if (hash) {
         // 尝试找到锚点对应的元素
-        // 使用 setTimeout 确保在页面完全渲染和淡入动画可能开始后执行滚动
+        // 使用 setTimeout 确保在页面完全渲染和淡入动画可能完成之后执行滚动
         setTimeout(() => {
             const element = document.querySelector(hash);
             if (element) {
@@ -129,7 +129,7 @@ window.addEventListener('load', function() {
                 // 如果找不到元素，则回退到滚动到顶部
                  window.scrollTo(0, 0);
             }
-        }, 100); // 稍作延迟以确保元素可见
+        }, 550); // 增加延迟时间
     } else {
         // 如果没有锚点，则滚动到顶部
         // 使用 setTimeout 确保在页面布局完成后再滚动
