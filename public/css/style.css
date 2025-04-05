@@ -1,0 +1,547 @@
+/* 全局样式 */
+:root {
+    --primary-color: #0a5f38; /* 墨绿色作为主色调 */
+    --secondary-color: #3e8e41; /* 较浅的绿色作为辅助色 */
+    --accent-color: #4caf50; /* 鲜绿色作为点缀 */
+    --light-bg: #263238; /* 深蓝灰色作为浅背景 */
+    --dark-bg: #1a2b32; /* 更深的蓝灰色作为深背景 */
+    --text-color: #ffffff; /* 纯白色作为主要文字颜色 */
+    --light-text: #f9f9f9; /* 更浅的白色 */
+    --white: #ffffff; /* 纯白色 */
+    --border-color: #2c4c3b; /* 深绿色边框 */
+    --card-bg: #213a43; /* 卡片背景色 */
+    --input-bg: #1c2a31; /* 表单输入框背景 */
+}
+
+body {
+    color: var(--text-color);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    background-color: var(--dark-bg);
+}
+
+/* 主体内容区域，应用过渡效果 */
+.page-content {
+    opacity: 1; /* 初始不透明度 */
+    transition: opacity 300ms ease-in-out; /* 过渡动画 */
+}
+
+/* Logo区域样式 */
+.logo-area {
+    background-color: #fff;
+    padding: 25px 0; /* 增加上下内边距 */
+    position: relative;
+}
+
+.logo-area .container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 25px; /* 增加间距 */
+    position: relative;
+}
+
+.logo-area .container::after {
+    content: '';
+    position: absolute;
+    bottom: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: fit-content;
+    height: 1px;
+    background-color: var(--border-color);
+}
+
+.logo-area img {
+    max-height: 90px; /* 增加logo尺寸 */
+    width: auto;
+}
+
+/* 公司名称和标语样式 */
+.company-title-area {
+    text-align: left;
+}
+
+.company-title {
+    font-size: 2.4rem; /* 增大字体 */
+    font-weight: 700;
+    margin-bottom: 8px; /* 增加间距 */
+    color: var(--primary-color); /* 将标题改为绿色 */
+}
+
+.company-tagline {
+    font-size: 1.2rem; /* 增大字体 */
+    color: #6c757d;
+    margin-bottom: 0;
+}
+
+/* 导航栏样式 */
+.navbar {
+    border-bottom: 1px solid var(--border-color);
+    background-color: var(--dark-bg);
+    padding: 1rem 0; /* 增加导航栏上下内边距 */
+    position: sticky; /* 使导航栏固定在顶部 */
+    top: 0; /* 固定在顶部 */
+    z-index: 1020; /* 确保在其他内容之上 */
+}
+
+/* 导航居中 */
+.navbar .navbar-collapse {
+    justify-content: center;
+}
+
+.navbar .language-selector {
+    position: absolute;
+    right: 15px;
+}
+
+.navbar .nav-link {
+    color: var(--primary-color); /* 更改为墨绿色 */
+    font-weight: 700; /* 加粗进一步增强 */
+    padding: 0.7rem 1.5rem; /* 增加内边距使按钮更大 */
+    font-size: 1.1rem; /* 增大字体 */
+    transition: color 0.3s ease;
+}
+
+.navbar .nav-link:hover,
+.navbar .nav-link.active {
+    color: var(--secondary-color); /* 悬停和激活状态改为较浅的绿色 */
+    text-decoration: underline; /* 添加下划线以显示状态变化 */
+}
+
+.navbar .dropdown-menu {
+    border-radius: 0;
+    margin-top: 0.5rem;
+    background-color: var(--light-bg);
+    border-color: var(--border-color);
+    padding: 0.5rem 0;
+}
+
+.navbar .dropdown-item {
+    color: var(--primary-color); /* 更改为墨绿色 */
+    padding: 0.6rem 1.5rem; /* 增加下拉菜单项的内边距 */
+    font-size: 1rem;
+    font-weight: 600; /* 加粗 */
+}
+
+.navbar .dropdown-item:hover {
+    background-color: var(--dark-bg);
+    color: var(--secondary-color); /* 悬停时改为较浅的绿色 */
+    text-decoration: underline; /* 添加下划线 */
+}
+
+.language-selector {
+    margin-left: 1rem;
+}
+
+.language-selector .form-select {
+    background-color: var(--light-bg);
+    color: var(--text-color);
+    border-color: var(--border-color);
+}
+
+/* 页面头部样式 */
+.page-header {
+    background-color: var(--light-bg);
+    padding: 2rem 0;
+    margin-bottom: 2rem;
+}
+
+.business-header,
+.products-header,
+.faq-header,
+.contact-header {
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../images/business-header.jpg') no-repeat center center;
+    background-size: cover;
+    color: var(--white);
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+    position: relative;
+}
+
+.business-header::before,
+.products-header::before,
+.faq-header::before,
+.contact-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(10, 95, 56, 0.3); /* 添加墨绿色滤镜 */
+    z-index: 1;
+}
+
+.business-header .container,
+.products-header .container,
+.faq-header .container,
+.contact-header .container {
+    position: relative;
+    z-index: 2;
+}
+
+.business-header h1 {
+    font-weight: 700;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.business-header .lead {
+    font-size: 1.3rem;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+/* 栏目标题 */
+.section-title {
+    position: relative;
+    margin-bottom: 30px;
+    color: var(--accent-color);
+    font-weight: 700;
+}
+
+.section-title::after {
+    content: '';
+    display: block;
+    width: 50px;
+    height: 3px;
+    background-color: var(--primary-color);
+    margin-top: 10px;
+}
+
+.section-title.text-center::after {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* 卡片样式 */
+.card {
+    border: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+    background-color: var(--card-bg);
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.card-title {
+    color: var(--accent-color);
+}
+
+/* 按钮样式 */
+.btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.btn-primary:hover {
+    background-color: var(--secondary-color);
+    border-color: var(--secondary-color);
+}
+
+.btn-outline-primary {
+    color: var(--accent-color);
+    border-color: var(--accent-color);
+}
+
+.btn-outline-primary:hover {
+    background-color: var(--primary-color);
+    color: var(--white);
+    border-color: var(--primary-color);
+}
+
+/* 业务卡片样式 */
+.business-card {
+    padding: 1.5rem;
+    border-radius: 5px;
+    height: 100%;
+}
+
+.business-card .card-icon {
+    font-size: 2rem;
+    color: var(--accent-color);
+    margin-bottom: 1rem;
+}
+
+.business-card .card-title {
+    color: var(--accent-color);
+    margin-bottom: 1rem;
+}
+
+.small-title {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--secondary-color);
+}
+
+/* 添加技术优势和产品特点列表项的白色文字样式 */
+.advantages ul li,
+.product-features ul li,
+.product-applications ul li,
+.product-applications p {
+    color: var(--text-color);
+}
+
+.advantages .small-title,
+.product-features .small-title,
+.product-applications .small-title {
+    color: var(--accent-color);
+}
+
+.conclusion-box {
+    background-color: var(--light-bg);
+    border-left: 4px solid var(--primary-color);
+    margin-top: 2rem;
+}
+
+/* 联系页面样式 */
+.contact-info-box {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    height: 100%;
+}
+
+.contact-form-box {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+}
+
+.form-control, .form-select {
+    background-color: var(--input-bg);
+    border-color: var(--border-color);
+    color: var(--text-color);
+}
+
+.form-control:focus, .form-select:focus {
+    background-color: var(--input-bg);
+    border-color: var(--primary-color);
+    color: var(--text-color);
+    box-shadow: 0 0 0 0.25rem rgba(10, 95, 56, 0.25);
+}
+
+.form-label {
+    color: var(--light-text);
+}
+
+.map-placeholder {
+    background-color: var(--light-bg);
+    border: 1px solid var(--border-color);
+    height: 350px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-color);
+    font-size: 1.25rem;
+    margin-top: 2rem;
+}
+
+/* FAQ页面样式 */
+.accordion-item {
+    background-color: var(--card-bg);
+    border-color: var(--border-color);
+}
+
+.accordion-button {
+    background-color: var(--light-bg);
+    color: var(--text-color);
+}
+
+.accordion-button:not(.collapsed) {
+    background-color: var(--primary-color);
+    color: var(--white);
+}
+
+.accordion-button::after {
+    filter: invert(1);
+}
+
+.accordion-body {
+    background-color: var(--card-bg);
+    color: var(--text-color);
+}
+
+/* 页脚样式 */
+footer {
+    background-color: var(--dark-bg) !important;
+    border-top: 1px solid var(--border-color);
+}
+
+footer h5 {
+    color: var(--accent-color);
+}
+
+footer a {
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+    color: var(--accent-color) !important;
+}
+
+/* 响应式调整 */
+@media (max-width: 991.98px) { /* Bootstrap lg breakpoint */
+    .navbar-nav {
+        padding: 1rem 0;
+    }
+    
+    .navbar-nav .nav-link {
+        padding: 0.5rem 1rem;
+    }
+    
+    /* 移动端菜单展开时居中 */
+    .navbar-collapse.show .navbar-nav {
+        width: 100%;
+    }
+    .navbar-collapse.show .navbar-nav .nav-item {
+        text-align: center;
+    }
+    /* 确保下拉菜单在移动端也能正常显示 */
+    .navbar-collapse.show .dropdown-menu {
+        text-align: center; /* 可选：下拉菜单项也居中 */
+    }
+    
+    .language-selector {
+        position: relative;
+        right: auto;
+        top: auto;
+        transform: none;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+        padding-left: 1rem;
+        text-align: center; /* 语言选择器也居中 */
+        width: fit-content; /* 限制宽度以便居中 */
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+@media (max-width: 768px) {
+    .section-title {
+        font-size: 1.8rem;
+    }
+    
+    .business-header,
+    .products-header,
+    .faq-header,
+    .contact-header {
+        padding: 2rem 0;
+    }
+}
+
+/* Card和正文文本颜色调整 */
+.card-text, 
+p, 
+.accordion-body,
+.small-title,
+.form-label {
+    color: var(--text-color);
+}
+
+/* 表单控件文字颜色 */
+.form-control, .form-select {
+    background-color: var(--input-bg);
+    border-color: var(--border-color);
+    color: var(--text-color);
+}
+
+/* 下拉动画 */
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 淡入动画 */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* 导航栏淡入下降动画 */
+.navbar-fadeIn {
+    animation: fadeInDown 0.5s ease-in-out;
+}
+
+/* 按钮淡入动画 */
+.btn {
+    transition: all 0.3s ease;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* 导航链接悬停过渡效果 */
+.navbar-nav .nav-link {
+    position: relative;
+}
+
+.navbar-nav .nav-link:after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 50%;
+    background-color: var(--primary-color);
+    transition: all 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover:after,
+.navbar-nav .nav-link.active:after {
+    width: 50%;
+    left: 25%;
+}
+
+/* 卡片悬停效果增强 */
+.card {
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+}
+
+/* 滚动到顶部按钮 */
+.back-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: var(--primary-color);
+    color: white;
+    text-align: center;
+    line-height: 40px;
+    z-index: 1000;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background-color: var(--secondary-color);
+}
