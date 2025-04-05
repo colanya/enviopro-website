@@ -3,8 +3,26 @@ document.addEventListener('DOMContentLoaded', function() {
     // 初始化语言选择器
     initLanguageSelector();
     
-    // 初始化页面切换动画
+    // 初始化页面切换动画 (只绑定链接点击事件)
     initPageTransitions();
+});
+
+// 页面加载或从缓存恢复时执行淡入
+window.addEventListener('pageshow', function(event) {
+    const mainContent = document.querySelector('.page-content');
+    if (mainContent) {
+        // 无论是否从 BFcache 加载，都确保初始状态透明，然后淡入
+        // 对于 BFcache 恢复，这可以覆盖掉可能残留的 opacity: 0 状态
+        mainContent.style.opacity = '0';
+        fadeIn(mainContent, 500);
+    } else {
+        console.warn('Page content area (.page-content) not found for initial fade-in.');
+    }
+
+    // 如果页面是从 BFcache 加载的，可以进行日志记录或其他操作
+    // if (event.persisted) {
+    //     console.log("Page loaded from BFcache");
+    // }
 });
 
 // 语言选择器功能
@@ -20,7 +38,7 @@ function initLanguageSelector() {
     }
 }
 
-// 页面切换动画
+// 页面切换动画 (移除初始淡入逻辑)
 function initPageTransitions() {
     // 获取所有站内链接 (排除锚点链接, e.g., href="#" or href="page.html#section")
     const internalLinks = document.querySelectorAll('a[href^="index"], a[href^="about"], a[href^="business"], a[href^="products"], a[href^="faq"], a[href^="contact"]');
@@ -65,16 +83,6 @@ function initPageTransitions() {
             }
         });
     });
-    
-    // 页面加载时的淡入动画，同样作用于主体内容区域
-    const mainContent = document.querySelector('.page-content');
-    if (mainContent) {
-        // 确保初始状态是透明的，以便淡入动画可见
-        mainContent.style.opacity = '0'; 
-        fadeIn(mainContent, 500);
-    } else {
-         console.warn('Page content area (.page-content) not found for initial fade-in.');
-    }
 }
 
 // 淡出效果函数
